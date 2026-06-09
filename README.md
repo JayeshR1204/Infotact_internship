@@ -16,3 +16,22 @@ Minimum Viable Product Specifications
 The foundational feature is the REST API and split architecture. The backend must manage user sessions using JWTs, while the React 19 frontend consumes these APIs. 
 The core operational module is the WebSocket Server. The intern must configure Socket.IO alongside the Express server. 
 To ensure the chat scales, Redis must be implemented to manage the shared state and pub/sub messaging across potentially multiple server instances.
+
+Technology Stack
+Frontend
+
+* React 19
+* Vite 7
+* TypeScript
+* Tailwind CSS v4
+
+Backend
+
+* Node.js
+* Express.js
+* TypeScript
+
+Real-Time Communication & Caching
+
+* Socket.IO
+* Redis
