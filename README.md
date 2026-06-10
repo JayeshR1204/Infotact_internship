@@ -29,44 +29,6 @@ HR managers have access to administrative tools that support workforce managemen
 * Generating company-wide reports
 * Initiating payroll processing workflows
 
-# Enterprise HRMS & Payroll Management System
-
-## Project Overview
-
-The Enterprise HRMS & Payroll Management System is a web-based platform designed to streamline employee management, leave approvals, and payroll operations within an organization. The system provides dedicated interfaces for employees and HR managers, enabling efficient workflow management while maintaining high security standards.
-
-## User Roles
-
-### Employee
-
-Employees can securely access their accounts to manage day-to-day HR activities, including:
-
-* Submitting leave requests
-* Tracking leave status and approvals
-* Viewing personal information
-* Downloading monthly payroll reports and payslips
-
-### HR Manager
-
-HR managers have access to administrative tools that support workforce management, including:
-
-* Reviewing and approving employee leave requests
-* Managing employee records
-* Monitoring organizational data through dashboards
-* Generating company-wide reports
-* Initiating payroll processing workflows
-
-## Key Features
-
-* Secure user authentication using JWT
-* Role-based access control for employees and HR managers
-* Leave management and approval workflow
-* Payroll management and payslip generation
-* Interactive analytics dashboard
-* Employee data management
-* Department and hierarchy tracking
-* Real-time status updates and notifications
-
 Technical Overview
 Backend
 
