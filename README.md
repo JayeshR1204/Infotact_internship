@@ -1,37 +1,13 @@
 # Infotact_internship
 this is first repository for internship
 
-Project 1: Real-Time B2B SaaS Collaboration Workspace 
-(Slack/Notion Clone) 
+Project 1: Project 3: Enterprise HRMS & Payroll Automation Dashboard
+
 Executive Problem Statement:
 
-Modern remote teams require centralized workspaces that combine real-time communication with document collaboration. Legacy HTTP-based polling applications fail to provide the instant synchronization teams expect, leading to severe API latency and poor user experiences. The objective of this project is to architect a highly scalable, real-time collaboration platform. The intern will build a system where users can create "Workspaces," chat in real-time channels, and co-edit simple documents. The engineering focus is strictly on horizontal scalability, utilizing WebSockets and Redis to handle concurrent connections efficiently. 
+Enterprise HR departments struggle with fragmented data, managing employee onboarding, leave requests, and payroll across disparate spreadsheets. A highly secure, centralized Human Resource Management System (HRMS) is required to automate these workflows while strictly protecting Personally Identifiable Information (PII). 
+This project requires the development of a secure HRMS using the MERN stack. The focus will be on complex state management on the frontend, rigorous Role-Based Access Control (RBAC) on the backend, and generating automated, downloadable payroll reports (PDFs) from raw database records.
 
 Business Objectives and Key Performance Indicators:
 
-The strategic vision is to build a stateless backend architecture capable of handling thousands of real-time events without crashing. Success will be measured by the application's ability to broadcast messages to connected clients instantly without relying on continuous HTTP polling. The frontend must deliver a seamless, app-like experience with zero full-page reloads. 
-
-Minimum Viable Product Specifications 
-
-The foundational feature is the REST API and split architecture. The backend must manage user sessions using JWTs, while the React 19 frontend consumes these APIs. 
-The core operational module is the WebSocket Server. The intern must configure Socket.IO alongside the Express server. 
-To ensure the chat scales, Redis must be implemented to manage the shared state and pub/sub messaging across potentially multiple server instances.
-
-Technology Stack
-Frontend
-
-* React 19
-* Vite 7
-* TypeScript
-* Tailwind CSS v4
-
-Backend
-
-* Node.js
-* Express.js
-* TypeScript
-
-Real-Time Communication & Caching
-
-* Socket.IO
-* Redis
+The primary engineering objective is absolute data security and role isolation. An employee must never be able to access the payroll APIs designated for the HR Manager role. Success will be measured by the strict implementation of Express middleware to block unauthorized users, input sanitization, and data encryption. 
