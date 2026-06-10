@@ -1,6 +1,3 @@
-# Infotact_internship
-this is first repository for internship
-
 Project 1: 
 Project 3: Enterprise HRMS & Payroll Automation Dashboard
 
