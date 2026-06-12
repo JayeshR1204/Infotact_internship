@@ -46,8 +46,8 @@ Frontend
 * Tailwind CSS
 * React Query / Redux Toolkit for state management
 
-Update(11/06/2026):
+Update (11/06/2026):
 Added a sample file named user.js to have a basic idea of how to create an user model
-Update(12/06/2026):
+Update (12/06/2026):
 Added a sample file named generatetoken.ts to have a basic idea of how to generate the token
 
