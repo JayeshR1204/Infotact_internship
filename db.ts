@@ -7,11 +7,10 @@ const connectDB = async (): Promise<void> => {
         
         const conn = await mongoose.connect(mongoURI);
         
-        console.log(`🍃 MongoDB Connected Safely: ${conn.connection.host}`);
+        console.log(`MongoDB Connected Safely: ${conn.connection.host}`);
     } catch (error) {
-        console.error(`❌ Database Connection Error: ${(error as Error).message}`);
+        console.error(`Database Connection Error: ${(error as Error).message}`);
         process.exit(1); // Stop the server if the database fails to connect
     }
 };
-
 export default connectDB;
