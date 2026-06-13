@@ -46,5 +46,5 @@ app.post('/api/auth/mock-login', (req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 HRMS Server running securely on http://localhost:${PORT}`);
+    console.log(`HRMS Server running securely on http://localhost:${PORT}`);
 });
