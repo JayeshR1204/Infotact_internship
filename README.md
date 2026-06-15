@@ -52,4 +52,7 @@ Update (12/06/2026):
 Added a sample file named generatetoken.ts to have a basic idea of how to generate the token
 Update (13/06/2026):
 Created a placeholder for implementing authentication routes for user registration
+Update (15/06/2026):
+Created a sample file to handle user registration and login functionality with password encryption and JWT token generation.
+
 
