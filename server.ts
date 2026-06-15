@@ -2,7 +2,9 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import connectDB from './db.js';
-import { generateToken } from './utils/authUtils.js'; // <-- Import your new utility
+import { generateToken } from './utils/authUtils.js';
+import { protectRoute, authorizeRoles, AuthenticatedRequest } from './middleware/authMiddleware.js'; // <-- Import middleware
+import { UserRole } from './models/User.js'; // <-- Import your roles enum
 
 const app: Application = express();
 const PORT: number = 5000;
@@ -28,9 +30,8 @@ app.get('/', (req: Request, res: Response) => {
     });
 });
 
-// Mock Login Route to verify JWT Token Generation contribution
+// Mock Login Route
 app.post('/api/auth/mock-login', (req: Request, res: Response) => {
-    // Simulated valid user details for proof of concept
     const mockUser = {
         id: "65f8a2b3c9e1b23456789abc",
         role: "HR Manager" 
@@ -45,6 +46,19 @@ app.post('/api/auth/mock-login', (req: Request, res: Response) => {
     });
 });
 
+// PROTECTED ROUTE: Only accessible by HR Managers or Admins via valid JWT
+app.get(
+    '/api/hrms/admin-dashboard', 
+    protectRoute, 
+    authorizeRoles(UserRole.ADMIN, UserRole.HR_MANAGER), 
+    (req: AuthenticatedRequest, res: Response) => {
+        res.json({
+            success: true,
+            message: "Welcome to the Secured HR Payroll Dashboard Metrics.",
+            requestedBy: req.user
+        });
+});
+
 app.listen(PORT, () => {
-    console.log(`🚀 HRMS Server running securely on http://localhost:${PORT}`);
+    console.log(`HRMS Server running securely on http://localhost:${PORT}`);
 });
