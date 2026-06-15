@@ -11,7 +11,6 @@ const PORT: number = 5000;
 
 // Connect to MongoDB
 connectDB();
-
 // Security Middleware
 app.use(helmet()); 
 app.use(cors({
@@ -29,7 +28,6 @@ app.get('/', (req: Request, res: Response) => {
         message: "Enterprise HRMS & Payroll API is running successfully."
     });
 });
-
 // Mock Login Route
 app.post('/api/auth/mock-login', (req: Request, res: Response) => {
     const mockUser = {
@@ -58,7 +56,6 @@ app.get(
             requestedBy: req.user
         });
 });
-
 app.listen(PORT, () => {
     console.log(`HRMS Server running securely on http://localhost:${PORT}`);
 });
