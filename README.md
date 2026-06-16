@@ -54,5 +54,7 @@ Update (13/06/2026):
 Created a placeholder for implementing authentication routes for user registration
 Update (15/06/2026):
 Created a sample file to handle user registration and login functionality with password encryption and JWT token generation.
+Update (16/06/2026):
+Added employee detail retrieval endpoint to fetch employee information and related department and manager data from the database.
 
 
