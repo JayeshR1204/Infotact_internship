@@ -56,5 +56,7 @@ Update (15/06/2026):
 Created a sample file to handle user registration and login functionality with password encryption and JWT token generation.
 Update (16/06/2026):
 Added employee detail retrieval endpoint to fetch employee information and related department and manager data from the database.
+Update (17/06/2026):
+Add Payroll schema and employee mapping for salary tracking and payslips.
 
 
