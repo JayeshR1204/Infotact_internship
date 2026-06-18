@@ -58,5 +58,7 @@ Update (16/06/2026):
 Added employee detail retrieval endpoint to fetch employee information and related department and manager data from the database.
 Update (17/06/2026):
 Add Payroll schema and employee mapping for salary tracking and payslips.
+Update (18/06/2026):
+Add leave management endpoints update the leave policy for the employees
 
 
