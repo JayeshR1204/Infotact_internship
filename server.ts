@@ -3,14 +3,14 @@ import cors from 'cors';
 import helmet from 'helmet';
 import connectDB from './db.js';
 import { generateToken } from './utils/authUtils.js';
-import { protectRoute, authorizeRoles, AuthenticatedRequest } from './middleware/authMiddleware.js'; // <-- Import middleware
-import { UserRole } from './models/User.js'; // <-- Import your roles enum
+import employeeRoutes from './routes/employeeRoutes.js'; // <-- Import the new employee management routes
 
 const app: Application = express();
 const PORT: number = 5000;
 
 // Connect to MongoDB
 connectDB();
+
 // Security Middleware
 app.use(helmet()); 
 app.use(cors({
@@ -21,6 +21,9 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Mount Domain Specific API Routers
+app.use('/api/employees', employeeRoutes); // <-- Attach the employee route layer here
+
 // Base Route
 app.get('/', (req: Request, res: Response) => {
     res.json({
@@ -28,6 +31,7 @@ app.get('/', (req: Request, res: Response) => {
         message: "Enterprise HRMS & Payroll API is running successfully."
     });
 });
+
 // Mock Login Route
 app.post('/api/auth/mock-login', (req: Request, res: Response) => {
     const mockUser = {
@@ -44,18 +48,6 @@ app.post('/api/auth/mock-login', (req: Request, res: Response) => {
     });
 });
 
-// PROTECTED ROUTE: Only accessible by HR Managers or Admins via valid JWT
-app.get(
-    '/api/hrms/admin-dashboard', 
-    protectRoute, 
-    authorizeRoles(UserRole.ADMIN, UserRole.HR_MANAGER), 
-    (req: AuthenticatedRequest, res: Response) => {
-        res.json({
-            success: true,
-            message: "Welcome to the Secured HR Payroll Dashboard Metrics.",
-            requestedBy: req.user
-        });
-});
 app.listen(PORT, () => {
     console.log(`HRMS Server running securely on http://localhost:${PORT}`);
 });
