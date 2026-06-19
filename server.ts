@@ -2,8 +2,8 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import connectDB from './db.js';
-import { generateToken } from './utils/authUtils.js';
-import employeeRoutes from './routes/employeeRoutes.js'; // <-- Import the new employee management routes
+import employeeRoutes from './routes/employeeRoutes.js';
+import authRoutes from './routes/authRoutes.js'; // <-- Import the new auth routing controller
 
 const app: Application = express();
 const PORT: number = 5000;
@@ -22,29 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Mount Domain Specific API Routers
-app.use('/api/employees', employeeRoutes); // <-- Attach the employee route layer here
+app.use('/api/auth', authRoutes);         // <-- Attach authentication routes
+app.use('/api/employees', employeeRoutes); // <-- Attach employee workflow management routes
 
 // Base Route
 app.get('/', (req: Request, res: Response) => {
     res.json({
         success: true,
         message: "Enterprise HRMS & Payroll API is running successfully."
-    });
-});
-
-// Mock Login Route
-app.post('/api/auth/mock-login', (req: Request, res: Response) => {
-    const mockUser = {
-        id: "65f8a2b3c9e1b23456789abc",
-        role: "HR Manager" 
-    };
-
-    const token = generateToken({ userId: mockUser.id, role: mockUser.role });
-
-    res.json({
-        success: true,
-        message: "Authentication successful (Mock)",
-        token: token
     });
 });
 
