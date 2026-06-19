@@ -1,0 +1,30 @@
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = "your_super_secret_hrms_key"; // Store this in an environment variable (.env)
+
+// Middleware to verify if the user is logged in
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Expecting "Bearer <token>"
+
+    if (!token) return res.status(401).json({ message: "Access Denied: No Token Provided!" });
+
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+        if (err) return res.status(403).json({ message: "Invalid or Expired Token" });
+        req.user = user; // Attach user payload (id, role) to the request object
+        next();
+    });
+}
+
+// Middleware to restrict access based on HR/Manager roles
+function authorizeRoles(...allowedRoles) {
+    return (req, res, next) => {
+        if (!req.user || !allowedRoles.includes(req.user.role)) {
+            return res.status(403).json({ message: "Access Denied: Unauthorized Role" });
+        }
+        next();
+    };
+}
+
+// Example usage on a sensitive route:
+// app.delete('/api/employees/:id', authenticateToken, authorizeRoles('HR', 'Admin'), (req, res) => { ... });
+
