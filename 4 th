@@ -1,0 +1,64 @@
+// Employee Class Model
+class Employee {
+    constructor(id, name, email, department, role, salary, dateHired = new Date()) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.department = department;
+        this.role = role;
+        this.salary = parseFloat(salary);
+        this.dateHired = new Date(dateHired);
+        this.status = 'Active'; // Active, On Leave, Terminated
+    }
+
+    updateStatus(newStatus) {
+        const validStatuses = ['Active', 'On Leave', 'Terminated'];
+        if (validStatuses.includes(newStatus)) {
+            this.status = newStatus;
+        }
+    }
+}
+
+// HRMS Controller System
+class HRMSSystem {
+    constructor() {
+        this.employees = [];
+    }
+
+    // Add new employee with auto-generated ID if not provided
+    addEmployee(data) {
+        const id = data.id || 'EMP' + String(this.employees.length + 101);
+        const newEmp = new Employee(id, data.name, data.email, data.department, data.role, data.salary, data.dateHired);
+        this.employees.push(newEmp);
+        return newEmp;
+    }
+
+    // Filter employees by department or status
+    getEmployees(filter = {}) {
+        return this.employees.filter(emp => {
+            let match = true;
+            if (filter.department && emp.department !== filter.department) match = false;
+            if (filter.status && emp.status !== filter.status) match = false;
+            return match;
+        });
+    }
+
+    // HR Metrics Dashboard Calculations
+    getDashboardMetrics() {
+        const totalCount = this.employees.length;
+        const activeCount = this.getEmployees({ status: 'Active' }).length;
+        
+        const totalPayroll = this.employees
+            .filter(emp => emp.status === 'Active')
+            .reduce((sum, emp) => sum + emp.salary, 0);
+
+        return {
+            totalEmployees: totalCount,
+            activeEmployees: activeCount,
+            monthlyPayrollExpense: (totalPayroll / 12).toFixed(2)
+        };
+    }
+}
+
+// Export for use in frontend or backend environments
+export { HRMSSystem, Employee };
