@@ -60,5 +60,10 @@ Update (17/06/2026):
 Add Payroll schema and employee mapping for salary tracking and payslips.
 Update (18/06/2026):
 Add leave management endpoints update the leave policy for the employees
+Update (19/06/2026) :
+Implemented Department model for managing the employee's detail
+Update (22/06/2026) :
+Created a centralized Axios service with automatic JWT token attachment for secure backend API communication.
+Implemented global authentication state management with persistent JWT storage and logout functionality.
 
 
