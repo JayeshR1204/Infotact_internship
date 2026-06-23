@@ -16,15 +16,10 @@ function App() {
             <Routes>
 
                 <Route path="/" element={<Login />} />
-
                 <Route path="/dashboard" element={<Dashboard />} />
-
                 <Route path="/employees" element={<Employees />} />
-
                 <Route path="/leave-requests" element={<LeaveRequests />} />
-
                 <Route path="/payroll" element={<Payroll />} />
-
                 <Route path="/profile" element={<Profile />} />
 
             </Routes>
@@ -32,6 +27,6 @@ function App() {
         </BrowserRouter>
 
     );
-
 }
+
 export default App;
