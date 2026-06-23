@@ -65,5 +65,9 @@ Implemented Department model for managing the employee's detail
 Update (22/06/2026) :
 Created a centralized Axios service with automatic JWT token attachment for secure backend API communication.
 Implemented global authentication state management with persistent JWT storage and logout functionality.
+Update (23/06/2026) :
+Configured application routing with React Router to enable navigation between authentication and HRMS dashboard pages.
+Initialized the React application entry point and configured the root component rendering using ReactDOM.
+
 
 
