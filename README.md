@@ -80,6 +80,7 @@ Frontend
 
 > **⚠️ Repository Restructure Notice:** 
 > The `Employee.ts`, `Department.ts`, and `user.ts` files have been migrated into the `src` folder. This restructuring strictly aligns the codebase with our assigned MERN stack team roles.
+> All the unrelated files pushed before are stored in `sample` folder
 
 **Update (23/06/2026):**
 * Added databases to configure and manage the MongoDB connection with basic error handling.
