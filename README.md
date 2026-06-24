@@ -76,4 +76,11 @@ Created a centralized Axios service with automatic JWT token attachment for secu
 **Update (23/06/2026):**
 Configured application routing with React Router to enable navigation between authentication and HRMS dashboard pages. Initialized the React application entry point and configured the root component rendering using ReactDOM.
 
+> **⚠️ Repository Restructure Notice:** 
+> The `Employee.ts`, `Department.ts`, and `user.ts` files have been migrated into the `src` folder. This restructuring strictly aligns the codebase with our assigned MERN stack team roles. Moving forward, please ensure you are only committing files within your specific domain (Backend/Security, Database/API, Frontend, or DevOps) to prevent merge conflicts and maintain clear project ownership.
+
+**Update (23/06/2026):**
+
+
+
 
