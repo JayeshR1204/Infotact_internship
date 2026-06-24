@@ -55,8 +55,7 @@ const seedDatabase = async () => {
         address: "Chennai"
     });
 
-    console.log("✅ Database seeded successfully");
-
+    console.log("Database seeded successfully");
     mongoose.connection.close();
 };
 
