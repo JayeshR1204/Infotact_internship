@@ -48,31 +48,22 @@ Frontend
 
 **Update (11/06/2026):**
 Added a sample file named user.js to have a basic idea of how to create an user model.
-
 **Update (12/06/2026):**
 Added a sample file named generatetoken.ts to have a basic idea of how to generate the token.
-
 **Update (13/06/2026):**
 Created a placeholder for implementing authentication routes for user registration.
-
 **Update (15/06/2026):**
 Created a sample file to handle user registration and login functionality with password encryption and JWT token generation.
-
 **Update (16/06/2026):**
 Added employee detail retrieval endpoint to fetch employee information and related department and manager data from the database.
-
 **Update (17/06/2026):**
 Add Payroll schema and employee mapping for salary tracking and payslips.
-
 **Update (18/06/2026):**
 Add leave management endpoints update the leave policy for the employees.
-
 **Update (19/06/2026):**
 Implemented Department model for managing the employee's detail.
-
 **Update (22/06/2026):**
 Created a centralized Axios service with automatic JWT token attachment for secure backend API communication. Implemented global authentication state management with persistent JWT storage and logout functionality.
-
 **Update (23/06/2026):**
 Configured application routing with React Router to enable navigation between authentication and HRMS dashboard pages. Initialized the React application entry point and configured the root component rendering using ReactDOM.
 
