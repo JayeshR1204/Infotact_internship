@@ -1,5 +1,4 @@
 import Employee from "../models/Employee";
-
 export const getEmployeeDetails = async () => {
 
     return Employee.aggregate([
