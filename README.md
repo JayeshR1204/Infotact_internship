@@ -87,5 +87,9 @@ Frontend
 * Added a seed to populate the database with sample users, departments, and employee records for testing
 * Created some constants to store reusable role and employee status values across the project.
 
+**Update (25/06/2026):**
+* Implemented Payroll model for managing employee salaries, allowances, and deductions.
+* Implemented LeaveRequest model for handling employee time-off requests and approval statuses.
+* Added an aggregation service to fetch comprehensive employee details, linking them with their department, payroll, and user accounts.
 
 
