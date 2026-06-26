@@ -92,7 +92,7 @@ Frontend
 * Implemented LeaveRequest model for handling employee time-off requests and approval statuses.
 * Added an aggregation service to fetch comprehensive employee details, linking them with their department, payroll, and user accounts.
 
-**Update (25/06/2026):**
+**Update (26/06/2026):**
 * Added controllers for employee, payroll, and leave operations with basic CRUD functionality.
 
 
