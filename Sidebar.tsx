@@ -44,6 +44,19 @@ export default function Sidebar() {
           </>
         )}
       </nav>
-
+{/* User Footer Profile Node */}
+      <div className="p-4 border-t border-slate-800 bg-slate-950 flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-medium truncate text-slate-200">{userMock.name}</p>
+            <p className="text-xs text-slate-400 italic">{userMock.role}</p>
+          </div>
+          <button className="text-slate-400 hover:text-red-400 p-1 rounded transition-colors" title="Logout Session">
+            <LogOut size={18} />
+          </button>
+        </div>
+      </div>
+    </aside>
+  );
 
 }
