@@ -95,5 +95,8 @@ Frontend
 **Update (26/06/2026):**
 * Added controllers for employee, payroll, and leave operations with basic CRUD functionality.
 
+**Update (26/06/2026):**
+* Created route files to organize REST API endpoints for employees, payroll, and leave requests.
+* Added `response.ts` utility for consistent API response formatting.
 
 
