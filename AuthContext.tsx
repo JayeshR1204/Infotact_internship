@@ -46,7 +46,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem('hrms_token', jwtToken);
     localStorage.setItem('hrms_user', JSON.stringify(userData));
   };
+/**
+   * Completely flushes the session contexts to prevent cross-account data leaking
+   */
+  const logoutSession = () => {
+    setToken(null);
+    setUser(null);
+    localStorage.removeItem('hrms_token');
+    localStorage.removeItem('hrms_user');
+    window.location.href = '/login';
+  };
 
+  return (
+    <AuthContext.Provider value={{ user, token, loading, loginSession, logoutSession }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};
 
-  
+/**
+ * Custom React Hook to cleanly extract auth variables inside any UI component layout
+ */
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be executed within an explicit AuthProvider wrapper');
+  }
+  return context;
 };
