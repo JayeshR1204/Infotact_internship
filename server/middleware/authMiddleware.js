@@ -12,22 +12,34 @@ const protect = async (req, res, next) => {
     ) {
       token = req.headers.authorization.split(" ")[1];
 
-      const decoded = jwt.verify(
-        token,
-        process.env.JWT_SECRET
-      );
+      // Verify JWT
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      req.user = await User.findById(decoded.id).select("-password");
+      // Find user and exclude password
+      const user = await User.findById(decoded.id).select("-password");
+
+      if (!user) {
+        return res.status(401).json({
+          success: false,
+          message: "User not found.",
+        });
+      }
+
+      req.user = user;
 
       next();
     } else {
       return res.status(401).json({
-        message: "Token not found",
+        success: false,
+        message: "Access denied. No token provided.",
       });
     }
   } catch (error) {
+    console.error(error);
+
     return res.status(401).json({
-      message: "Unauthorized",
+      success: false,
+      message: "Invalid or expired token.",
     });
   }
 };
@@ -35,10 +47,17 @@ const protect = async (req, res, next) => {
 // Role Authorization
 const authorize = (...roles) => {
   return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized.",
+      });
+    }
+
     if (!roles.includes(req.user.role)) {
       return res.status(403).json({
         success: false,
-        message: "Access Denied",
+        message: "Access denied. Insufficient permissions.",
       });
     }
 
