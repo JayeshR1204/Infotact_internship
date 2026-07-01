@@ -102,3 +102,8 @@ Frontend
 **Update (30/06/2026):**
 * Implemented MongoDB aggregation pipelines for payroll calculations and $lookup operations for department hierarchy reporting.
 
+**Update (01/07/2026):**
+* Added optimized employee queries using field selection, population, and lean documents.
+  
+
+
