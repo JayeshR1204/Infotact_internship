@@ -104,6 +104,9 @@ Frontend
 
 **Update (01/07/2026):**
 * Added optimized employee queries using field selection, population, and lean documents.
+
+**Update (02/07/2026):**
+* Created reporting controller and API routes for payroll, department, and employee reports.
   
 
 
