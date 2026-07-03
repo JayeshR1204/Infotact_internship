@@ -1,5 +1,5 @@
 const LeaveRequest = require("../models/LeaveRequest");
-
+const Leave = require("../models/Leave");
 exports.createLeaveRequest = async (req, res) => {
   try {
     const { leaveType, startDate, endDate, reason } = req.body;
