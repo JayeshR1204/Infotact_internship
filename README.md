@@ -107,6 +107,11 @@ Frontend
 
 **Update (02/07/2026):**
 * Created reporting controller and API routes for payroll, department, and employee reports.
-  
+
+**Update (04/07/2026):**
+* Implemented payroll export aggregation to prepare clean payroll data for report generation.
+* Implemented payroll export aggregation to prepare clean payroll data for report generation.
+
+
 
 
