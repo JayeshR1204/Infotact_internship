@@ -2,17 +2,16 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import AdminDashboard from './pages/AdminDashboard';
+import EmployeeDashboard from './pages/EmployeeDashboard'; // <-- Import real Employee workspace page
+import ProtectedRoute from './components/ProtectedRoute';
 
-// Dummy view layouts to prevent compilation crashes before full page files are committed
-const MockLogin = () => <div className="p-8 font-semibold text-gray-700">🔐 Authentication View Portal</div>;
-const MockAdminDash = () => <div className="p-8 font-semibold text-gray-700">📊 Executive Metrics Dashboard (Admin/HR Only)</div>;
-const MockEmpDash = () => <div className="p-8 font-semibold text-gray-700">👤 Personal Work Profile & Pay Slips (Employee)</div>;
-const MockUnauthorized = () => <div className="p-8 font-semibold text-red-600">⚠️ Access Denied: Insufficient Clearances.</div>;
+const MockUnauthorized = () => <div className="p-8 font-semibold text-rose-600 p-8 bg-white rounded-xl shadow-xs border border-slate-200">⚠️ Access Denied: Insufficient Clearances.</div>;
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="flex h-screen w-screen bg-slate-50 text-slate-900 overflow-hidden font-sans">
-      {/* Structural Components */}
       <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Navbar />
@@ -29,12 +28,26 @@ export default function App() {
     <Router>
       <Routes>
         {/* Public Authentication Path */}
-        <Route path="/login" element={<MockLogin />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/unauthorized" element={<MockUnauthorized />} />
 
-        {/* Protected Operational Application Framework */}
-        <Route path="/admin" element={<DashboardLayout><MockAdminDash /></DashboardLayout>} />
-        <Route path="/employee" element={<DashboardLayout><MockEmpDash /></DashboardLayout>} />
+        {/* Protected Dashboard Applications */}
+        <Route 
+          path="/admin" 
+          element={
+            <ProtectedRoute allowedRoles={['Admin', 'HR Manager']}>
+              <DashboardLayout><AdminDashboard /></DashboardLayout>
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/employee" 
+          element={
+            <ProtectedRoute allowedRoles={['Employee']}>
+              <DashboardLayout><EmployeeDashboard /></DashboardLayout> {/* <-- Replace mock component placeholder here */}
+            </ProtectedRoute>
+          } 
+        />
 
         {/* Catch All Redirect */}
         <Route path="*" element={<Navigate to="/login" replace />} />
