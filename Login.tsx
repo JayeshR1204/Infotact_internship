@@ -16,3 +16,32 @@ export default function Login() {
     e.preventDefault();
     setErrorMsg('');
     setIsSubmitting(true);
+
+    try {
+      // Direct integration pipeline to your real authentication backend endpoints
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: "Test User Account",
+          email,
+          password,
+          role: "HR Manager", // Default testing flag parameters
+          department: "Operations Strategy"
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Invalid system access token configuration.');
+      }
+
+      // Commit to global context state provider memory
+      loginSession(data.token, {
+        id: data.user.id,
+        name: data.user.name,
+        email: data.user.email,
+        role: data.user.role,
+        employeeId: data.user.employeeId
+      });
