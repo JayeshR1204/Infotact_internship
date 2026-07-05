@@ -54,7 +54,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
     localStorage.removeItem('hrms_token');
     localStorage.removeItem('hrms_user');
-    window.location.href = '/login';
   };
 
   return (
