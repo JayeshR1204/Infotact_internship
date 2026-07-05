@@ -45,3 +45,16 @@ export default function Login() {
         role: data.user.role,
         employeeId: data.user.employeeId
       });
+
+    // Reroute based on structural clearance configurations
+      if (data.user.role === 'Employee') {
+        navigate('/employee');
+      } else {
+        navigate('/admin');
+      }
+    } catch (err) {
+      setErrorMsg((err as Error).message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
