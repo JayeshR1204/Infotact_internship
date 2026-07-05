@@ -94,3 +94,28 @@ return (
 
             <div className="relative">
               <Lock className="absolute left-3 top-3.5 text-slate-400" size={18} />
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg pl-10 pr-4 py-3 text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500 transition-all text-sm"
+                placeholder="Cryptographic Passphrase"
+              />
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-teal-600 hover:bg-teal-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all shadow-md disabled:opacity-50"
+            >
+              {isSubmitting ? 'Verifying Access Node...' : 'Access Workspace'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
