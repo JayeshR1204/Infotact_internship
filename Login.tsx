@@ -77,3 +77,20 @@ return (
             <span>{errorMsg}</span>
           </div>
         )}
+
+        <form className="mt-8 space-y-6" onSubmit={handleFormSubmission}>
+          <div className="space-y-4 rounded-md shadow-xs">
+            <div className="relative">
+              <Mail className="absolute left-3 top-3.5 text-slate-400" size={18} />
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg pl-10 pr-4 py-3 text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-500 transition-all text-sm"
+                placeholder="Enterprise Corporate Email"
+              />
+            </div>
+
+            <div className="relative">
+              <Lock className="absolute left-3 top-3.5 text-slate-400" size={18} />
