@@ -58,3 +58,22 @@ export default function Login() {
       setIsSubmitting(false);
     }
   };
+
+return (
+    <div className="min-h-screen w-screen flex items-center justify-center bg-slate-900 px-4">
+      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl border border-slate-200">
+        <div>
+          <h2 className="text-center text-3xl font-extrabold tracking-tight text-slate-900">
+            Sign In to HRMS Console
+          </h2>
+          <p className="mt-2 text-center text-sm text-slate-500">
+            Enter your enterprise network identity coordinates
+          </p>
+        </div>
+
+        {errorMsg && (
+          <div className="bg-rose-50 border border-rose-200 rounded-lg p-4 flex items-center gap-3 text-rose-700 text-sm animate-pulse">
+            <AlertCircle size={20} className="shrink-0" />
+            <span>{errorMsg}</span>
+          </div>
+        )}
