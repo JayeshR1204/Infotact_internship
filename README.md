@@ -112,6 +112,9 @@ Frontend
 * Implemented payroll export aggregation to prepare clean payroll data for report generation.
 * Implemented payroll export aggregation to prepare clean payroll data for report generation.
 
+**Update (05/07/2026):**
+* Created payroll report routes to expose export-ready payroll data for future PDF generation.
+
 
 
 
