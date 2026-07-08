@@ -38,3 +38,29 @@ exports.getMyLeaves = async (req, res) => {
     });
   }
 };
+// Get Logged-in Employee Leave History
+exports.getMyLeaves = async (req, res) => {
+  try {
+    const leaves = await Leave.find({
+      employee: req.user._id,
+    }).sort({
+      createdAt: -1,
+    });
+
+    res.status(200).json({
+      success: true,
+      count: leaves.length,
+      leaves,
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+};
