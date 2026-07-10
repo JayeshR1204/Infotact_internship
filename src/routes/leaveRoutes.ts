@@ -1,7 +1,8 @@
 import { Router } from "express";
+
 import {
     createLeaveRequest,
-    getLeaveRequests
+    getLeaveRequests,
 } from "../controllers/leaveController";
 
 const router = Router();
