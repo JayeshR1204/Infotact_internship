@@ -1,7 +1,8 @@
 import { Router } from "express";
+
 import {
     createPayroll,
-    getPayrolls
+    getPayrolls,
 } from "../controllers/payrollController";
 
 const router = Router();
