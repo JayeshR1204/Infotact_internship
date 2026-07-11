@@ -7,23 +7,24 @@ export const getDepartmentHierarchy = async () => {
                 from: "users",
                 localField: "manager",
                 foreignField: "_id",
-                as: "manager"
-            }
+                as: "manager",
+            },
         },
 
         {
             $unwind: {
                 path: "$manager",
-                preserveNullAndEmptyArrays: true
-            }
+                preserveNullAndEmptyArrays: true,
+            },
         },
 
         {
             $project: {
                 departmentName: 1,
                 departmentCode: 1,
-                managerName: "$manager.name"
-            }
-        }
+                managerName: "$manager.name",
+                managerEmail: "$manager.email",
+            },
+        },
     ]);
 };
