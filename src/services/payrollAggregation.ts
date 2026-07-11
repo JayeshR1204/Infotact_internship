@@ -7,12 +7,12 @@ export const generatePayrollReport = async () => {
                 from: "employees",
                 localField: "employee",
                 foreignField: "_id",
-                as: "employee"
-            }
+                as: "employee",
+            },
         },
 
         {
-            $unwind: "$employee"
+            $unwind: "$employee",
         },
 
         {
@@ -22,13 +22,13 @@ export const generatePayrollReport = async () => {
                         {
                             $add: [
                                 "$basicSalary",
-                                "$allowances"
-                            ]
+                                "$allowances",
+                            ],
                         },
-                        "$deductions"
-                    ]
-                }
-            }
+                        "$deductions",
+                    ],
+                },
+            },
         },
 
         {
@@ -39,8 +39,9 @@ export const generatePayrollReport = async () => {
                 allowances: 1,
                 deductions: 1,
                 netSalary: 1,
-                employeeName: "$employee.employeeId"
-            }
-        }
+                employeeId: "$employee.employeeId",
+                designation: "$employee.designation",
+            },
+        },
     ]);
 };
